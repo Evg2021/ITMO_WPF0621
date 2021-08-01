@@ -1,0 +1,108 @@
+﻿<Window x:Class="WPFCalculator.Calcul"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFCalculator"
+        mc:Ignorable="d"
+        x:Name="MainWindow" Title="Калькулятор" Height="520" Width="500" ResizeMode="NoResize" Cursor="Hand" Topmost="True" WindowStartupLocation="CenterScreen" Background="#E0FFFF">
+
+    <Grid Margin="1">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="80" />
+            <RowDefinition x:Name="AdvRow" Height="auto"/>
+            <RowDefinition x:Name="MainRow" Height= "350"/>
+        </Grid.RowDefinitions>
+        <Menu Grid.Column="0" Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#E0EEFF">
+            <MenuItem x:Name="MainMenu" Header="Меню">
+                <MenuItem x:Name="AdvancedCalc" Header="Инженерный" Click="AdvancedCalc_Click" IsCheckable="True"/>
+                <MenuItem x:Name="About" Header="О калькуляторе" Click="About_Click"/>
+            </MenuItem>
+        </Menu>
+        <TextBox x:Name="OutputDisplay" Grid.Column="0" Grid.Row="1" Text="0" TextAlignment="Right" Background="#FF89CDCD"
+                     FontSize="70" VerticalAlignment="Stretch"  Margin="0,0,0,0" Height="80" FontFamily="Digital-7" IsReadOnly="True"/>
+        
+        <!--AdvCalc-->
+        <Grid x:Name="AdvCalc" Grid.Row="2" Margin="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="2" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="2" />
+            </Grid.RowDefinitions>
+            <Button Grid.Row="2" Grid.Column="0" Style="{StaticResource buttonStyle}" Background="#FFD1D1C7" ToolTip="Возведение в степень">x^n</Button>
+            <Button Grid.Row="2" Grid.Column="2" Style="{StaticResource buttonStyle}" Background="#FFD1D1C7" ToolTip="Квадратный корень">√</Button>
+            <Button Grid.Row="2" Grid.Column="4" Style="{StaticResource buttonStyle}" Background="#FFD1D1C7" ToolTip="Обратное значение">1/x</Button>
+            <Button Grid.Row="2" Grid.Column="6" Style="{StaticResource buttonStyle}" Background="#FFD1D1C7" ToolTip="Возведение в квадрат">x^2</Button>
+            <Button Grid.Row="2" Grid.Column="8" Style="{StaticResource buttonStyle}" Background="#FFD1D1C7" ToolTip="Расчет факториала">n!</Button>
+            <Button Grid.Row="0" Grid.Column="8" Style="{StaticResource buttonStyle}" Background="#FFD1D1C7" ToolTip="Кубический корень">3√</Button>
+            <Button Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" Style="{StaticResource buttonStyle}" Background="#FFD1D1C7" ToolTip="Расчет квадратного уравнения">AХ²+BX+C</Button>
+        </Grid>
+
+        <!-- ButtonsPad -->
+        <Grid x:Name="NumPad" Grid.Column="0" Grid.Row="3" Margin="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="2" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="2" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="2" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="2" />
+            </Grid.RowDefinitions>
+            <Button Grid.Row="0" Grid.Column="0" Style="{StaticResource buttonStyle}" Background="#FFACA5B4">7</Button>
+            <Button Grid.Row="0" Grid.Column="2" Style="{StaticResource buttonStyle}" Background="#FFACA5B4">8</Button>
+            <Button Grid.Row="0" Grid.Column="4" Style="{StaticResource buttonStyle}" Background="#FFACA5B4">9</Button>
+            <Button Grid.Row="2" Grid.Column="0" Style="{StaticResource buttonStyle}" Background="#FFACA5B4">4</Button>
+            <Button Grid.Row="2" Grid.Column="2" Style="{StaticResource buttonStyle}" Background="#FFACA5B4">5</Button>
+            <Button Grid.Row="2" Grid.Column="4" Style="{StaticResource buttonStyle}" Background="#FFACA5B4">6</Button>
+            <Button Grid.Row="4" Grid.Column="0" Style="{StaticResource buttonStyle}" Background="#FFACA5B4">1</Button>
+            <Button Grid.Row="4" Grid.Column="2" Style="{StaticResource buttonStyle}" Background="#FFACA5B4">2</Button>
+            <Button Grid.Row="4" Grid.Column="4" Style="{StaticResource buttonStyle}" Background="#FFACA5B4">3</Button>
+            <Button Grid.Row="6" Grid.Column="0" Style="{StaticResource buttonStyle}" Background="#FFEBAB87">-/+</Button>
+            <Button Grid.Row="6" Grid.Column="2" Style="{StaticResource buttonStyle}" Background="#FFACA5B4">0</Button>
+            <Button Grid.Row="6" Grid.Column="4" Style="{StaticResource buttonStyle}" Background="#FFEBAB87">.</Button>
+            <Button Grid.Row="0" Grid.Column="6" Style="{StaticResource buttonStyle}" ToolTip="Деление" Background="#FFEBAB87">/</Button>
+            <Button Grid.Row="0" Grid.Column="8" Style="{StaticResource buttonStyle}" ToolTip="Сброс" Background="#FF8FE87B">C</Button>
+            <Button Grid.Row="2" Grid.Column="6" Style="{StaticResource buttonStyle}" ToolTip="Умножение" Background="#FFEBAB87">×</Button>
+            <Button Grid.Row="2" Grid.Column="8" Style="{StaticResource buttonStyle}" ToolTip="Дата" Background="#FF8FE87B">Date</Button>
+            <Button Grid.Row="4" Grid.Column="6" Style="{StaticResource buttonStyle}" ToolTip="Сложение" Background="#FFEBAB87">+</Button>
+            <Button Grid.Row="4" Grid.Column="8" Style="{StaticResource buttonStyle}" ToolTip="Выход" Background="#FF8FE87B">Exit</Button>
+            <Button Grid.Row="6" Grid.Column="6" Style="{StaticResource buttonStyle}" ToolTip="Вычитание" Background="#FFEBAB87">-</Button>
+            <Button Grid.Row="6" Grid.Column="8" Style="{StaticResource buttonStyle}" ToolTip="Результат" Background="#FFEBAB87">=</Button>
+
+        </Grid>
+
+    </Grid>
+
+
+</Window>
